@@ -1,11 +1,11 @@
 package dao;
 
 import entity.Food;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class FoodDao {
 
     public List<Food> getAllFood() throws SQLException {
         ResultSet resultSet = connection.prepareStatement(GET_ALL_FOOD_QUERY).executeQuery();
-        List<Food> foodList = new ArrayList<Food>();
+        List<Food> foodList = new ArrayList<>();
 
         while (resultSet.next()) {
             foodList.add(generateFoodItem(resultSet));

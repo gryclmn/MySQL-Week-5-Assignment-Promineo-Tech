@@ -1,10 +1,7 @@
 package util;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
 public class Printer {
 
-    private static Printer instance = new Printer();
     private static Integer horizontalDividerLength = 30;
     private static final String CONSOLE_RESET = "\u001B[0m";
     private static final String CONSOLE_RED = "\u001B[31m";
@@ -16,10 +13,6 @@ public class Printer {
     private static final String CONSOLE_WHITE = "\u001B[37m";
 
     private Printer() { }
-
-    public static Printer getInstance( ) {
-        return instance;
-    }
 
     public static void printTitle(String title) {
         int marginLength = (horizontalDividerLength - title.length()) / 2;
@@ -56,7 +49,7 @@ public class Printer {
         System.out.print(CONSOLE_RESET);
     }
 
-    public static void printHorizontalDivider() {
+    private static void printHorizontalDivider() {
         StringBuilder stringBuilder = build("*", horizontalDividerLength);
         System.out.println(stringBuilder.toString());
     }

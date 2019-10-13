@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnection {
+class DBConnection {
 
     private final static String URL = "jdbc:mysql://localhost:3306/food";
     private final static String USERNAME = "root";
@@ -15,20 +15,20 @@ public class DBConnection {
     private static DBConnection instance;
 
     private DBConnection(Connection connection) {
-        this.connection = connection;
+        DBConnection.connection = connection;
     }
 
-    public static Connection getConnection() {
+    static Connection getConnection() {
         if (instance == null) {
             try {
                 connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 instance = new DBConnection(connection);
-                Printer.getInstance().printAlert("Connection successful");
+                Printer.printAlert("Connection successful");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return DBConnection.connection;
+        return connection;
     }
 
 }
